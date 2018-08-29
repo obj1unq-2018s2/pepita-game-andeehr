@@ -1,4 +1,5 @@
 import ciudades.*
+import roque.*
 
 object pepita {
 	var property energia = 100
@@ -7,8 +8,11 @@ object pepita {
 	var property posicion = game.at(3,3)
 	method imagen() = "pepita.png"
 
-	method come(comida) {
-		energia = energia + comida.energia()
+//	method come(comida) {
+//		energia = energia + comida.energia()
+//	}
+	method come() {
+		energia = energia + roque.alimentar()
 	}
 	
 	method volaHacia(unaCiudad) {
@@ -24,4 +28,5 @@ object pepita {
 		energia -= self.energiaParaVolar(posicion.distance(nuevaPosicion))
 		self.posicion(nuevaPosicion)
 	}	
+	
 }
