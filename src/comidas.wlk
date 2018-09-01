@@ -4,6 +4,8 @@ object manzana {
 	method serRecogido(){
 		game.removeVisual(self)
 	}
+	method come(){}
+	method dejarAlimento(){}	
 }
 
 object alpiste {
@@ -12,4 +14,6 @@ object alpiste {
 	method serRecogido(){
 		game.removeVisual(self)
 	}
+	method come(){}
+	method dejarAlimento(){}
 }
