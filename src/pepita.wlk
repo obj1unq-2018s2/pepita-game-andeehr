@@ -1,5 +1,6 @@
 import ciudades.*
 import roque.*
+import comidas.*
 
 object pepita {
 	var property energia = 100
@@ -18,28 +19,20 @@ object pepita {
 			return "pepita1.png"
 		}
 	}
-
- 	method come() {
- 		var alimento = roque.encontrado()
- 		if (alimento != null){
-			energia = energia + roque.alimentar()
-			game.addVisualIn(alimento, game.at(x,y))
-			x = 1.randomUpTo(10) //Vuelvo a cambiar el valor de x, y para que no aparezca
-			y = 1.randomUpTo(10) //el otro objeto en el mismo lugar random
+	method teEncontro(alguien) {
+		if (alguien.encontrado() != null) {
+			self.come(alguien.encontrado())
+			alguien.dejarAlimento()
 		}
 	}
-	
+		
 	method come(comida) {
 		energia = energia + comida.energia()
+		game.addVisualIn(comida, game.at(x, y))
+		x = 1.randomUpTo(10) // Vuelvo a cambiar el valor de x, y para que no aparezca
+		y = 1.randomUpTo(10) // el otro objeto en el mismo lugar random
 	}
 	
-	method serRecogido(){
-		
-	}
-	method soyPepita() = self
-	//Lo utilizo asi, porque de otra forma no me dejaba comparar con el objeto el if
-	//Se puede hacer algo mejor?
-
 	method volaHacia(unaCiudad) {
 		if (ciudad != unaCiudad && energia > self.energiaQueNecesitoParaVolarA(unaCiudad)) {
 			self.move(unaCiudad.posicion())
@@ -55,7 +48,6 @@ object pepita {
 	
 	method energiaQueNecesitoParaVolarA(unaCiudad) = self.energiaParaVolar(posicion.distance(unaCiudad.posicion()))
 	// Podia pasar todo este metodo como argumento, pero lo preferi asi por cuestiones de legibilidad
-	// Que es mejor?
 
 	method energiaParaVolar(distancia) = 15 + 5 * distancia
 

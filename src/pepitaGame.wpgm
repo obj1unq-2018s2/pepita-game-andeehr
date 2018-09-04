@@ -19,10 +19,7 @@ program PepitaGame {
 	game.addVisual(villaGesell)
 	game.addVisual(pepita)
 	game.addVisualCharacter(roque)
-	game.whenCollideDo(manzana, { roque => roque.encontrarComida(manzana)})
-	game.whenCollideDo(alpiste, { roque => roque.encontrarComida(alpiste)})
-	game.whenCollideDo(roque, { pepita => pepita.come()})
-	game.whenCollideDo(pepita, { roque => roque.dejarAlimento()})
+	game.whenCollideDo(roque, { alguien => alguien.teEncontro(roque)})
 
 //	TECLADO
 	keyboard.v().onPressDo { pepita.volaHacia(villaGesell) }

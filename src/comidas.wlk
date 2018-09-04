@@ -1,19 +1,23 @@
+import ciudades.*
+import roque.*
+import pepita.*
+
 object manzana {
 	const property imagen = "manzana.png"
 	method energia() = 80
-	method serRecogido(){
+	method teEncontro(alguien){
 		game.removeVisual(self)
+		alguien.encontrarComida(self)
+		game.say(alguien, "Encontre morfi")
 	}
-	method come(){}
-	method dejarAlimento(){}	
 }
 
 object alpiste {
 	const property imagen = "alpiste.png"
 	method energia() = 5
-	method serRecogido(){
+	method teEncontro(alguien){
 		game.removeVisual(self)
+		alguien.encontrarComida(self)
+		game.say(alguien, "Encontre morfi")
 	}
-	method come(){}
-	method dejarAlimento(){}
 }

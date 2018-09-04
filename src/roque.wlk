@@ -4,21 +4,20 @@ import pepita.*
 object roque {
 	var property posicion = game.at(0,0)
 	var property encontrado = null
+	var x = 1.randomUpTo(10)
+	var y = 1.randomUpTo(10)
 
 	method imagen() = "roque.png"
 	
-	method encontrarComida(comida){
-		if (encontrado != null){
-			game.addVisualIn(encontrado, self.posicion().clone()) //no puedo volver a levantar el alimento
+	method encontrarComida(comida) {
+		if (encontrado != null) {
+			game.addVisualIn(encontrado, game.at(x, y))
+			x = 1.randomUpTo(10)
+			y = 1.randomUpTo(10)
 		}
-		if (comida != pepita.soyPepita()){
-			game.say(self, "Encontre morfi")
-			game.removeVisual(comida)
-			encontrado = comida
-		}
+		encontrado = comida 
 	}
 	method dejarAlimento(){
 		encontrado = null
 	}
-	method alimentar() = encontrado.energia()
 }
