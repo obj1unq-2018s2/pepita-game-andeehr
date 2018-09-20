@@ -12,6 +12,8 @@ object roque {
 	method encontrarComida(comida) {
 		if (encontrado != null) {
 			game.addVisualIn(encontrado, game.at(x, y))
+			
+			// TODO Este precálculo de x e y es innecesario y complica tu código, evitalo.
 			x = 1.randomUpTo(10)
 			y = 1.randomUpTo(10)
 		}

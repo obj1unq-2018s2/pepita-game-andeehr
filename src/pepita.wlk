@@ -6,8 +6,11 @@ object pepita {
 	var property energia = 100
 	var property ciudad = buenosAires 
 	var property posicion = game.at(3,3)
+	
+	// TODO Estas variables son innecesarias y son una mala práctica, evitalas.
 	var x = 1.randomUpTo(10)
 	var y = 1.randomUpTo(10)
+	
 	method imagen() {
 		if (energia < 10){
 			return "pepita.png"
@@ -20,6 +23,7 @@ object pepita {
 		}
 	}
 	method teEncontro(alguien) {
+		// TODO Todo este código le quedaría mucho mejor a Roque.
 		if (alguien.encontrado() != null) {
 			self.come(alguien.encontrado())
 			alguien.dejarAlimento()
@@ -28,6 +32,8 @@ object pepita {
 		
 	method come(comida) {
 		energia = energia + comida.energia()
+		
+		// TODO Hay una lógica muy parecida en roque, ¿cómo podemos evitar que se repita?
 		game.addVisualIn(comida, game.at(x, y))
 		x = 1.randomUpTo(10) // Vuelvo a cambiar el valor de x, y para que no aparezca
 		y = 1.randomUpTo(10) // el otro objeto en el mismo lugar random
